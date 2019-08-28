@@ -28,10 +28,12 @@ ai_2 = {    x = (128 - board_size) / 2 + tile_size / 2,
 
 function _init()
     poke(0x5f2d, 1)
+    init_tiles()
     state = "player"
 end
 
 function _update()
+    occupied_tiles()
     player_click()
     update_player()
 end
@@ -51,9 +53,19 @@ function _draw()
     end
     draw_player()
     draw_ai()
-    --draw_debug()
+    -- draw_debug()
     -- draw mouse
     spr(2,stat(32)-1,stat(33)-1)
+end
+
+function init_tiles()
+    for i = size*size do
+        add(tiles, 0)
+    end
+end
+
+function occupied_tiles()
+
 end
 
 function player_click()

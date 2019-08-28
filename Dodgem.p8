@@ -11,23 +11,22 @@ tiles = {}
 
 player_1 = {    x = (128 - board_size) / 2 + tile_size + tile_size / 2,
                 y = (128 - board_size) / 2 + tile_size * 2 + tile_size / 2
-}
+            }
 
 player_2 = {    x = (128 - board_size) / 2 + tile_size * 2 + tile_size / 2,
                 y = (128 - board_size) / 2 + tile_size * 2 + tile_size / 2
-}
+            }
 
 ai_1 = {    x = (128 - board_size) / 2 + tile_size / 2,
                 y = (128 - board_size) / 2 + tile_size / 2
-}
+        }
 
 ai_2 = {    x = (128 - board_size) / 2 + tile_size / 2,
                 y = (128 - board_size) / 2 + tile_size + tile_size / 2
-}
+        }
 
 function _init()
-    
-    --tiles_num()
+  
 end
 
 function _update()

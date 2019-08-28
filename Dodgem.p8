@@ -5,7 +5,7 @@ __lua__
 --by niarkou
 
 function _init()
-    size = 7
+    size = 3
     tile_size = flr(112/size)
     board_size = tile_size*size
     tiles = {}

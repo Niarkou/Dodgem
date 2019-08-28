@@ -32,7 +32,7 @@ function _init()
 end
 
 function _update()
-    click()
+    player_click()
     update_player()
 end
 
@@ -51,14 +51,15 @@ function _draw()
     end
     draw_player()
     draw_ai()
+    --draw_debug()
     -- draw mouse
     spr(2,stat(32)-1,stat(33)-1)
 end
 
-function click()
-    if click == {} and stat(34) == 1 then
-        add(click, x = stat(32))
-        add(click, y = stat(33))
+function player_click()
+    if stat(34) == 1 then
+        add(click, stat(32) )
+        add(click, stat(33) )
     end
 end
 
@@ -77,6 +78,12 @@ function draw_ai()
     spr(1, ai_2.x, ai_2.y)
     pal()
 end
+
+function draw_debug()
+    print(click[1], 5, 5, 0)
+    print(click[2], 5, 12, 0)
+end
+
 __gfx__
 00000000000000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 00000000000100001710000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000

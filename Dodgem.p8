@@ -19,21 +19,30 @@ player_2 = {    x = (128 - board_size) / 2 + tile_size * 2 + tile_size / 2,
             }
 
 ai_1 = {    x = (128 - board_size) / 2 + tile_size / 2,
-                y = (128 - board_size) / 2 + tile_size / 2
+            y = (128 - board_size) / 2 + tile_size / 2
         }
 
 ai_2 = {    x = (128 - board_size) / 2 + tile_size / 2,
-                y = (128 - board_size) / 2 + tile_size + tile_size / 2
+            y = (128 - board_size) / 2 + tile_size + tile_size / 2
         }
 
 function _init()
+    for i = 1, size do
+        for j = 1, size do
+            tiles[i*16 + j] = 0
+        end
+    end
+    for j = 1, size - 1 do
+        tiles[1*16 + j] = 1 -- ai
+    end
+    for i = 2, size do
+        tiles[i*16 + size] = 2 -- player
+    end
     poke(0x5f2d, 1)
-    init_tiles()
     state = "player"
 end
 
 function _update()
-    occupied_tiles()
     player_click()
     update_player()
 end
@@ -58,20 +67,10 @@ function _draw()
     spr(2,stat(32)-1,stat(33)-1)
 end
 
-function init_tiles()
-    for i = size*size do
-        add(tiles, 0)
-    end
-end
-
-function occupied_tiles()
-
-end
-
 function player_click()
     if stat(34) == 1 then
-        add(click, stat(32) )
-        add(click, stat(33) )
+        add(click, stat(32))
+        add(click, stat(33))
     end
 end
 

@@ -34,7 +34,6 @@ end
 
 function _update()
     player_click()
-    update_player()
 end
 
 function _draw()
@@ -52,8 +51,7 @@ function _draw()
     end
     draw_player()
     draw_ai()
-    -- draw_debug()
-    -- draw mouse
+    draw_debug()
     spr(2,stat(32)-1,stat(33)-1)
 end
 
@@ -78,8 +76,20 @@ function player_click()
     end
 end
 
-function update_player()
-
+function rules(piece, place)
+    if tiles[place] != 0 then
+        return false
+    elseif place == piece + 1 then
+        return true
+    elseif place == piece - 16 then
+        return true
+    elseif tiles[piece] == 1 and place == piece + 16 then
+        return true
+    elseif tiles[piece] == 2 and place == piece - 1 then
+        return true
+    else
+        return false
+    end
 end
 
 function draw_player()
